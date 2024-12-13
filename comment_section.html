@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام التعليقات</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+
+        .comment-section {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .comment-box {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            resize: none;
+        }
+
+        .comment-button {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .comment-button:hover {
+            background-color: #0056b3;
+        }
+
+        .comments {
+            margin-top: 20px;
+        }
+
+        .comment {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+            margin-bottom: 10px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="comment-section">
+        <h2>أضف تعليقًا</h2>
+        <textarea class="comment-box" id="commentBox" rows="4" placeholder="اكتب تعليقك هنا..."></textarea>
+        <button class="comment-button" onclick="addComment()">إرسال</button>
+        <div class="comments" id="comments">
+            <!-- التعليقات ستظهر هنا -->
+        </div>
+    </div>
+
+    <script>
+        function addComment() {
+            const commentBox = document.getElementById("commentBox");
+            const commentsContainer = document.getElementById("comments");
+
+            // تحقق من أن التعليق ليس فارغًا
+            if (commentBox.value.trim() === "") {
+                alert("يرجى كتابة تعليق قبل الإرسال!");
+                return;
+            }
+
+            // إنشاء عنصر جديد للتعليق
+            const comment = document.createElement("div");
+            comment.classList.add("comment");
+            comment.textContent = commentBox.value;
+
+            // إضافة التعليق إلى القائمة
+            commentsContainer.appendChild(comment);
+
+            // مسح النص داخل مربع التعليق
+            commentBox.value = "";
+        }
+    </script>
+</body>
+</html>
